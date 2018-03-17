@@ -53,7 +53,7 @@ describe('StackblitzWriter', () => {
 
   it('should create form element', () => {
     expect(stackblitzWriter._createFormElement('index.ts').outerHTML).toBe(
-      `<form action="https://plnkr.co/edit/?p=preview" method="post" target="_blank"></form>`);
+      `<form action="https://run.stackblitz.com/api/angular/v1?file=index.ts" method="post" target="_blank"></form>`);
   });
 
   it('should add files to form input', () => {
@@ -64,9 +64,9 @@ describe('StackblitzWriter', () => {
     stackblitzWriter._addFileToForm(form, data, 'Detail', 'src/detail.ts', 'path/to/file');
 
     expect(form.elements.length).toBe(3);
-    expect(form.elements[0].getAttribute('name')).toBe('files[test.ts]');
-    expect(form.elements[1].getAttribute('name')).toBe('files[test.html]');
-    expect(form.elements[2].getAttribute('name')).toBe('files[src/detail.ts]');
+    expect(form.elements[0].getAttribute('name')).toBe('files[app/test.ts]');
+    expect(form.elements[1].getAttribute('name')).toBe('files[app/test.html]');
+    expect(form.elements[2].getAttribute('name')).toBe('files[app/src/detail.ts]');
   });
 
   it('should open a new window with stackblitz url', fakeAsync(() => {

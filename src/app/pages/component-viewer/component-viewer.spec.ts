@@ -5,8 +5,8 @@ import {ComponentViewer, ComponentViewerModule} from './component-viewer';
 import {DocsAppTestingModule} from '../../testing/testing-module';
 
 import {EXAMPLE_COMPONENTS} from '@angular/material-examples';
-import {MatButtonModule} from '@angular/material';
-import {NgModule} from '@angular/core';
+import {MatButtonModule, MatIconModule} from '@angular/material';
+import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 const docItemsId = 'button';
@@ -31,6 +31,9 @@ describe('ComponentViewer', () => {
       imports: [ComponentViewerModule, DocsAppTestingModule, TestExampleModule],
       providers: [
         {provide: ActivatedRoute, useValue: mockActivatedRoute},
+      ],
+      schemas: [
+        NO_ERRORS_SCHEMA
       ]
     }).compileComponents();
   }));
