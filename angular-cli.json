@@ -20,7 +20,6 @@
       "styles": [
         "main.scss",
         "highlightjs/material-light.css",
-        "assets/green-bluegrey.css",
         {"input": "assets/pink-bluegrey.css", "lazy": true},
         {"input": "assets/deeppurple-amber.css", "lazy": true},
         {"input": "assets/indigo-pink.css", "lazy": true},
