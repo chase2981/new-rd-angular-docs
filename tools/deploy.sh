@@ -16,8 +16,8 @@
 
 npm run build-themes
 npx ng build --aot --prod
-npx firebase use "rd-docs-dev"
-npx firebase deploy
+npx firebase use "rd-docs-dev" --token=$FIREBASE_DEPLOY_TOKEN
+npx firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
 # todo: add comitizen, semantic-release
 # yarn semantic-release || true
