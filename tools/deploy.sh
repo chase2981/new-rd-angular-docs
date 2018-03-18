@@ -15,9 +15,9 @@
 # projectId=${PROJECT_ID[$version, $mode]}
 
 npm run build-themes
-ng build --aot --prod
-firebase use "rd-docs-dev"
-firebase deploy
+npx ng build --aot --prod
+npx firebase use "rd-docs-dev"
+npx firebase deploy
 
 # todo: add comitizen, semantic-release
 # yarn semantic-release || true
