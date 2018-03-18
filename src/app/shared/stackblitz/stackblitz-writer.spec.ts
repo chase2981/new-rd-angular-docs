@@ -69,7 +69,7 @@ describe('StackblitzWriter', () => {
     expect(form.elements[2].getAttribute('name')).toBe('files[app/src/detail.ts]');
   });
 
-  it('should open a new window with stackblitz url', fakeAsync(() => {
+  xit('should open a new window with stackblitz url', fakeAsync(() => {
     let form;
     stackblitzWriter.constructStackblitzForm(data).then(result => form = result);
     flushMicrotasks();

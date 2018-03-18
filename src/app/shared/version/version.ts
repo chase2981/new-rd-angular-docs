@@ -1,7 +1,7 @@
 import {VERSION} from '@angular/material';
 
 /** This material version will be used in footer and stackblitz. */
-export const materialVersion = VERSION.full;
+export const materialVersion = "0.0.0"; // VERSION.full;
 
 /** Version information with title and redirect url */
 export interface VersionInfo {
@@ -13,8 +13,8 @@ export interface VersionInfo {
 // TODO(tinayuangao): Update the title with actual versions
 export const docVersions: VersionInfo[] = [
   {
-    url: 'https://material.angular.io/',
-    title: '5.2.4'
+    url: 'https://rd-docs-dev.firebaseapp.com/',
+    title: '0.0.0'
   },
   {
     url: `http://v5.material.angular.io`,

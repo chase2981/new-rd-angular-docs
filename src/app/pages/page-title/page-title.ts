@@ -15,7 +15,7 @@ export class ComponentPageTitle {
     if (title !== '') {
       title = `${title} | `;
     }
-    this.bodyTitle.setTitle(`${title}Rent Dynamics`);
+    this.bodyTitle.setTitle(`${title} rd-docs`);
   }
 
   constructor(private bodyTitle: Title) { }
