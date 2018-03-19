@@ -14,9 +14,18 @@ import {
   CanActivateComponentSidenav
 } from './pages/component-sidenav/component-sidenav-can-load-guard';
 import {GuideViewer} from './pages/guide-viewer/guide-viewer';
+import { RouterOutletComponent } from './shared/router-outlet/router-outlet.component';
+import { LoginComponent } from './login/login.component';
 
 export const MATERIAL_DOCS_ROUTES: Routes = [
   {path: '', component: Homepage, pathMatch: 'full', data: {}},
+  {
+    path: 'auth', 
+    component: RouterOutletComponent,
+    children: [
+      {path: 'login', component:LoginComponent}
+    ]
+  },
   {path: 'categories', redirectTo: '/components/categories'},
   {path: 'guides', component: GuideList, data: {}},
   // Since https://github.com/angular/material2/pull/9574, the cdk-table guide became the overview

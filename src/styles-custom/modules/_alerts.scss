@@ -1,0 +1,28 @@
+@mixin alert($color) {
+    background: $color;
+    color: white;
+    padding: 16px;
+    border-radius: $radius;
+    font-weight: bold;
+    margin: 16px 0;
+}
+
+.alert--warning {
+    @include alert($yellow);
+}
+
+.alert--success {
+    @include alert($green);
+}
+
+.alert--danger {
+    @include alert($red);
+}
+
+.alert--primary {
+    @include alert($blue);
+}
+
+.alert--brand {
+    @include alert($base-gradient);
+}

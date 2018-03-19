@@ -1,0 +1,153 @@
+
+.container--documentation {
+    max-width: 800px;
+    width: 100%;
+    margin: auto;
+
+    table tr td:first-child,
+    table tr td:last-child {
+        white-space: nowrap;
+    }
+
+    hr {
+        margin: 56px 0;
+    }
+
+    h2[id] {
+        padding-top: 48px;
+        margin-top: -48px;
+        @media #{$small-and-down} {
+            padding-top: 64px;
+            margin-top: -64px;
+        }
+    }
+
+    .table--icons {
+        h1 {
+            margin: 0;
+        }
+    }
+
+
+}
+
+.snippet {
+    border: solid $border-width $snow;
+    border-radius: $radius;
+    overflow: hidden;
+    margin-bottom: 32px;
+    .snippet__preview {
+        padding: 16px;
+        
+    }
+    .snippet__code {
+        padding: 16px;
+        border-top: solid $border-width $snow;
+        background-color: $light-smoke;
+        overflow-x: auto;
+
+        pre {
+            background-color: transparent;
+            border-radius: $radius;
+            color: $red;
+            padding: 0;
+            display: block;
+            margin: 0;
+
+            // white-space: normal;
+            //font-weight: bold;
+        }
+    }
+}
+
+.colorPalette {
+    display: block;
+    @extend .clearfix;
+    margin-bottom: 24px;
+
+    @mixin colorPallete__color($bg-color-1, $bg-color-2, $bg-color-3, $color) {
+        //margin: 16px;
+        width: 25%;
+        display: inline-block;
+        float: left;
+        font-size: 18px;
+        @media #{$small-and-down} {
+            width: 100%;
+        }
+        div {
+            color: $color;
+            padding: 16px;
+
+            &:nth-child(1) {
+                background: $bg-color-1;
+            }
+            &:nth-child(2) {
+                background: $bg-color-2;
+            }
+            &:nth-child(3) {
+                background: $bg-color-3;
+            }
+
+            span {
+                display: block;
+                font-size: 0.875em;
+                opacity: 0.7;
+            }
+        }
+    }
+    .colorPalette__blue {
+        @include colorPallete__color($light-blue, $blue, $dark-blue, white);
+    }
+    .colorPalette__purple {
+        @include colorPallete__color($light-purple, $purple, $dark-purple, white);
+    }
+    .colorPalette__green {
+        @include colorPallete__color($light-green, $green, $dark-green, white);
+    }
+    .colorPalette__yellow {
+        @include colorPallete__color($light-yellow, $yellow, $dark-yellow, white);
+    }
+    .colorPalette__red {
+        @include colorPallete__color($red, null, null, white);
+    }
+    .colorPalette__night {
+        @include colorPallete__color($night, null, null, white);
+    }
+    .colorPalette__slate {
+        @include colorPallete__color($slate, null, null, white);
+    }
+    .colorPalette__silver {
+        @include colorPallete__color($silver, null, null, white);
+    }
+    .colorPalette__smoke {
+        @include colorPallete__color($smoke, null, null, $slate);
+    }
+    .colorPalette__snow {
+        @include colorPallete__color($snow, null, null, $slate);
+    }
+    .colorPalette__gradient {
+        @include colorPallete__color($blue, $purple, $base-gradient, white);
+
+        width: 100%;
+        display: block;
+
+        div {
+            &:nth-child(1) {
+                width: 50%;
+                display: inline-block;
+                float: left;
+            }
+            &:nth-child(2) {
+                width: 50%;
+                display: inline-block;
+                float: left;
+            }
+            &:nth-child(3) {
+                width: 100%;
+                display: inline-block;
+                float: left;
+                padding: 40px 16px;
+            }
+        }
+    }
+}

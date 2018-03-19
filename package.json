@@ -23,6 +23,7 @@
     "fetch": "bash ./tools/fetch-assets.sh",
     "fetch-local": "bash ./tools/fetch-assets-local.sh",
     "build-themes": "bash ./tools/build-themes.sh",
+    "postinstall": "npm run fetch",
     "prod-build": "npm run build-themes && ng build --aot --prod",
     "publish-prod": "bash ./tools/deploy.sh stable prod",
     "publish-dev": "bash ./tools/deploy.sh"
@@ -43,7 +44,9 @@
     "@angular/router": "^5.2.1",
     "@angular/service-worker": "^5.2.1",
     "@rd/compiler": "^1.0.2",
+    "@rd/core": "^1.1.0",
     "core-js": "^2.4.1",
+    "jssha": "^2.3.1",
     "moment": "^2.19.1",
     "rxjs": "^5.5.0",
     "zone.js": "^0.8.4"

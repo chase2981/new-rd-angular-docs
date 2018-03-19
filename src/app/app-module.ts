@@ -36,6 +36,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {GaService} from './shared/ga/ga';
+import { RouterOutletComponent } from './shared/router-outlet/router-outlet.component';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   imports: [
@@ -62,8 +64,12 @@ import {GaService} from './shared/ga/ga';
     StackblitzButtonModule,
     SvgViewerModule,
     ThemePickerModule,
+    LoginModule,
   ],
-  declarations: [MaterialDocsApp],
+  declarations: [
+    MaterialDocsApp,
+    RouterOutletComponent,
+  ],
   providers: [
     ComponentPageTitle,
     DocumentationItems,

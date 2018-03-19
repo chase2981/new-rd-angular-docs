@@ -1,7 +1,7 @@
 {
   "project": {
-    "version": "1.0.0-beta.24",
-    "name": "material-angular-io"
+    "version": "0.0.0",
+    "name": "@rd/docs"
   },
   "apps": [
     {
@@ -25,7 +25,9 @@
         {"input": "assets/indigo-pink.css", "lazy": true},
         {"input": "assets/purple-green.css", "lazy": true}
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jssha/src/sha.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "source": "environments/environment.ts",
@@ -47,7 +49,7 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "scss",
     "prefixInterfaces": false,
     "inline": {
       "style": false,

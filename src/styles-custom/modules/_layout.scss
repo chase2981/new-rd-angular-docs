@@ -1,0 +1,71 @@
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family;
+  font-size: $font-size-base;
+  font-weight: normal;
+  line-height: $line-height-base;
+  color: $body-color;
+  background-color: $body-bg;
+  letter-spacing: -0.5px;
+  -webkit-font-smoothing: antialiased;
+
+  @media #{$small-and-down} {
+    font-size: 14px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+* {
+  //@include animation-subtle;
+}
+
+hr {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  border: 0;
+  border-top: $border-width solid $smoke;
+  @extend .clearfix;
+}
+
+// Nav
+
+.content {
+  margin-left: $nav-width;
+  padding: 24px;
+  @media #{$medium-only} {
+    margin-left: $nav-trigger-medium-width;
+  }
+  @media #{$small-and-down} {
+    margin: 48px 0 0 0;
+    padding: 24px 16px;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+}
+
+@mixin well($color) {
+  background-color: $color;
+  border-radius: $radius;
+  padding: 24px;
+  margin: 16px 0;
+}
+
+.well {
+  @include well($light-smoke);
+}
+
+.well-trans {
+  @include well($trans);
+}
