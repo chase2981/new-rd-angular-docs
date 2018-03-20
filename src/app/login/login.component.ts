@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   password = '';
   errorMessage = '';
   private unsubscribe: Subject<{}> = new Subject();
-  private loading = false;
+  public loading = false;
 
   constructor(private authSvc: CoreAuthService, private coreApiSvc: CoreApiService, private router: Router) { }
 

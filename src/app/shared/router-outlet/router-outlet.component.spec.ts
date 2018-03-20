@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-import { RouterOutletStubComponent } from '../../testing/router-outlet-stub.component';
 import { RouterOutletComponent } from './router-outlet.component';
+import { LoginTestingModule } from '../../testing/login-testing-module';
 
 describe('RouterOutletComponent', () => {
   let component: RouterOutletComponent;
@@ -9,7 +10,13 @@ describe('RouterOutletComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RouterOutletStubComponent, RouterOutletComponent ]
+      imports: [
+        LoginTestingModule,
+      ],
+      declarations: [ RouterOutletComponent ],
+      schemas: [
+        NO_ERRORS_SCHEMA
+      ]
     })
     .compileComponents();
   }));
