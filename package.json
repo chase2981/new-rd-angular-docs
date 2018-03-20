@@ -23,7 +23,7 @@
     "fetch": "bash ./tools/fetch-assets.sh",
     "fetch-local": "bash ./tools/fetch-assets-local.sh",
     "build-themes": "bash ./tools/build-themes.sh",
-    "prepush": "npm run test",
+    "prepush": "npm run fetch && npm run test",
     "postinstall": "npm run fetch",
     "prod-build": "npm run build-themes && ng build --aot --prod",
     "publish-prod": "bash ./tools/deploy.sh stable prod",
