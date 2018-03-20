@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { RouterOutletStubComponent } from '../../testing/router-outlet-stub.component';
 import { RouterOutletComponent } from './router-outlet.component';
 
 describe('RouterOutletComponent', () => {
@@ -8,7 +9,7 @@ describe('RouterOutletComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RouterOutletComponent ]
+      declarations: [ RouterOutletStubComponent, RouterOutletComponent ]
     })
     .compileComponents();
   }));
