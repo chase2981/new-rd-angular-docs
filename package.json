@@ -25,7 +25,7 @@
     "fetch-local": "bash ./tools/fetch-assets-local.sh",
     "build-themes": "bash ./tools/build-themes.sh",
     "prepush": "npm run fetch && npm run test",
-    "postinstall": "npm run fetch",
+    "postinstall": "npm run fetch && npm run config -- --environment=dev",
     "prod-build": "npm run build-themes && ng build --aot --prod",
     "publish-prod": "bash ./tools/deploy.sh stable prod",
     "publish-dev": "bash ./tools/deploy.sh"
