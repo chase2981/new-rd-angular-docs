@@ -1,5 +1,10 @@
+
 export const environment = {
-  matGaId: 'UA-8594346-24', // Production id
-  ngGaId: 'UA-8594346-15', // Production id
   production: true,
+  matGaId: "UA-8594346-24",
+  ngGaId: "UA-8594346-15",
+  rd: {
+     coreApiKey: "undefined",
+     coreSecretKey: "undefined",
+  }
 };
