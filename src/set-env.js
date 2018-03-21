@@ -22,8 +22,8 @@ export const environment = {
   matGaId: "${isProd ? 'UA-8594346-24' : isDev ? '' : ''}",
   ngGaId: "${isProd ? 'UA-8594346-15' : isDev ? 'UA-8594346-26' : ''}",
   rd: {
-     coreApiKey: "${process.env.RD_CORE_API_KEY_DEV || ''}",
-     coreSecretKey: "${process.env.RD_CORE_SECRET_KEY_DEV || ''}",
+     coreApiKey: "${isProd ? process.env.RD_CORE_API_KEY_PROD : isDev ? process.env.RD_CORE_API_KEY_DEV : ''}",
+     coreSecretKey: "${isProd ? process.env.RD_CORE_SECRET_KEY_PROD : isDev ? process.env.RD_CORE_SECRET_KEY_DEV : ''}",
   }
 };
 `

@@ -19,7 +19,7 @@ export class RdCoreAuthServiceConfig implements CoreAuthServiceConfig {
 
   get host() {
     if (environment.production)
-      return '//api-dev.rentdynamics.com';
+      return '//api.rentdynamics.com';
 
     // return 'https://25ed31e4.ngrok.io';
     return '//api-dev.rentdynamics.com';
