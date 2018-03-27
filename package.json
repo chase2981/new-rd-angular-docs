@@ -71,6 +71,7 @@
     "karma": "1.2.0",
     "karma-browserstack-launcher": "^1.2.0",
     "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage-istanbul-reporter": "^1.4.2",
     "karma-jasmine": "^1.1.0",
     "karma-junit-reporter": "^1.2.0",
     "karma-phantomjs-launcher": "^1.0.4",

@@ -38,6 +38,7 @@ import {environment} from '../environments/environment';
 import {GaService} from './shared/ga/ga';
 import { RouterOutletComponent } from './shared/router-outlet/router-outlet.component';
 import { LoginModule } from './login/login.module';
+import { AuthGuard } from './shared/auth';
 
 @NgModule({
   imports: [
@@ -78,6 +79,7 @@ import { LoginModule } from './login/login.module';
     StyleManager,
     ThemeStorage,
     CanActivateComponentSidenav,
+    AuthGuard,
     {provide: LocationStrategy, useClass: PathLocationStrategy},
   ],
   bootstrap: [MaterialDocsApp],
