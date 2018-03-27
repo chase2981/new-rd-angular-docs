@@ -16,9 +16,10 @@ import {
 import {GuideViewer} from './pages/guide-viewer/guide-viewer';
 import { RouterOutletComponent } from './shared/router-outlet/router-outlet.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './shared/auth';
 
 export const MATERIAL_DOCS_ROUTES: Routes = [
-  {path: '', component: Homepage, pathMatch: 'full', data: {}},
+  {path: '', canActivate: [AuthGuard], component: Homepage, pathMatch: 'full', data: {}},
   {
     path: 'auth', 
     component: RouterOutletComponent,
@@ -27,14 +28,14 @@ export const MATERIAL_DOCS_ROUTES: Routes = [
     ]
   },
   {path: 'categories', redirectTo: '/components/categories'},
-  {path: 'guides', component: GuideList, data: {}},
+  {path: 'guides', canActivate: [AuthGuard], component: GuideList, data: {}},
   // Since https://github.com/angular/material2/pull/9574, the cdk-table guide became the overview
   // document for the cdk table. To avoid any dead / broken links, we redirect to the new location.
   {path: 'guide/cdk-table', redirectTo: '/cdk/table/overview'},
   {path: 'guide/:id', component: GuideViewer, data: {}},
   {
     path: ':section',
-    canActivate: [CanActivateComponentSidenav],
+    canActivate: [AuthGuard, CanActivateComponentSidenav],
     component: ComponentSidenav,
     children: [
       {path: '', redirectTo: 'categories', pathMatch: 'full'},
