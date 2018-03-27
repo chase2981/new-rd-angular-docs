@@ -12,6 +12,7 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-remap-istanbul'),
       require('@angular/cli/plugins/karma'),
+      require('karma-coverage-istanbul-reporter'),
       require('karma-browserstack-launcher'),
       require('karma-junit-reporter'),
       require('karma-sauce-launcher'),
@@ -38,8 +39,8 @@ module.exports = function (config) {
       environment: 'dev'
     },
     reporters: config.angularCli && config.angularCli.codeCoverage
-              ? ['dots', 'karma-remap-istanbul', 'junit']
-              : ['dots', 'karma-remap-istanbul', 'junit'],
+              ? ['progress', 'coverage-istanbul', 'junit']
+              : ['progress', 'junit'],
     // the default configuration
     junitReporter: {
       outputDir: 'dist/reports/junit', // results will be saved as $outputDir/$browserName.xml
