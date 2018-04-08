@@ -4,6 +4,7 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
 
 import { CoreAuthService, CoreApiService } from '@rd/core';
+import { Validators, FormControl, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -16,8 +17,16 @@ export class LoginComponent implements OnInit, OnDestroy {
   errorMessage = '';
   private unsubscribe: Subject<{}> = new Subject();
   public loading = false;
+  usernameFc = new FormControl('', [Validators.required]);
+  passwordFc = new FormControl('', [Validators.required, Validators.min(6)]);
+  form = this.fb.group({
+    usernameFc: this.usernameFc,
+    passwordFc: this.passwordFc
+  })
 
-  constructor(private authSvc: CoreAuthService, private coreApiSvc: CoreApiService, private router: Router) { }
+
+  constructor(private authSvc: CoreAuthService, private coreApiSvc: CoreApiService, private router: Router,
+  public fb: FormBuilder) { }
 
   ngOnInit() {
     if(sessionStorage.getItem('rdUserId') && sessionStorage.getItem('rdUserAuthToken')){
@@ -27,6 +36,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onLogin() {
+    if(this.form.invalid)
+      return;
     this.loading = true;
     const user = { username: this.username, password: this.password };
     this.authSvc.login(user).then((response) => {
@@ -48,6 +59,12 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.loading = false;
         this.errorMessage = error.json().error_message;
       });
+  }
+
+  getErrorMessage(fc: FormControl) {
+    return fc.hasError('required') ? 'You must enter a value' :
+        fc.hasError('min') ? 'You must enter a value greater than six charaters' :
+            '';
   }
 
   ngOnDestroy() {
