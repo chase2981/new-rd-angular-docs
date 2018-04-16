@@ -85,17 +85,6 @@
 
 /* max's styling from https://admin.rentdynamics.com */
 
-body {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto,
-    Helvetica Neue, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #3c4858;
-  background-color: #fff;
-  letter-spacing: -0.5px;
-  -webkit-font-smoothing: antialiased;
-}
 
 .login__content {
   position: absolute;
@@ -120,6 +109,7 @@ body {
   position: fixed;
   left: 500px;
   right: 0;
+  top: 0;
 }
 *,
 :after,

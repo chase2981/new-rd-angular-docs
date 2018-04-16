@@ -27,69 +27,69 @@ export const MATERIAL_DOCS_ROUTES: Routes = [
       { path: "logoff", resolve: LogoffResolve, redirectTo: "login" }
     ]
   },
+  // {
+  //   path: "",
+  //   component: MainLayout,
+  //   children: [
   {
     path: "",
-    component: MainLayout,
+    canActivate: [AuthGuard],
+    component: Homepage,
+    pathMatch: "full",
+    data: {}
+  },
+  { path: "categories", redirectTo: "/components/categories" },
+  {
+    path: "guides",
+    canActivate: [AuthGuard],
+    component: GuideList,
+    data: {}
+  },
+  // Since https://github.com/angular/material2/pull/9574, the cdk-table guide became the overview
+  // document for the cdk table. To avoid any dead / broken links, we redirect to the new location.
+  { path: "guide/cdk-table", redirectTo: "/cdk/table/overview" },
+  { path: "guide/:id", component: GuideViewer, data: {} },
+  {
+    path: ":section",
+    canActivate: [AuthGuard, CanActivateComponentSidenav],
+    component: ComponentSidenav,
     children: [
+      { path: "", redirectTo: "categories", pathMatch: "full" },
+      { path: "component/:id", redirectTo: ":id", pathMatch: "full" },
       {
-        path: "",
-        canActivate: [AuthGuard],
-        component: Homepage,
-        pathMatch: "full",
-        data: {}
+        path: "category/:id",
+        redirectTo: "/categories/:id",
+        pathMatch: "full"
       },
-      { path: "categories", redirectTo: "/components/categories" },
       {
-        path: "guides",
-        canActivate: [AuthGuard],
-        component: GuideList,
-        data: {}
-      },
-      // Since https://github.com/angular/material2/pull/9574, the cdk-table guide became the overview
-      // document for the cdk table. To avoid any dead / broken links, we redirect to the new location.
-      { path: "guide/cdk-table", redirectTo: "/cdk/table/overview" },
-      { path: "guide/:id", component: GuideViewer, data: {} },
-      {
-        path: ":section",
-        canActivate: [AuthGuard, CanActivateComponentSidenav],
-        component: ComponentSidenav,
+        path: "categories",
         children: [
-          { path: "", redirectTo: "categories", pathMatch: "full" },
-          { path: "component/:id", redirectTo: ":id", pathMatch: "full" },
+          { path: "", component: ComponentCategoryList },
+          { path: ":id", component: ComponentList }
+        ]
+      },
+      {
+        path: ":id",
+        component: ComponentViewer,
+        children: [
+          { path: "", redirectTo: "overview", pathMatch: "full" },
           {
-            path: "category/:id",
-            redirectTo: "/categories/:id",
+            path: "overview",
+            component: ComponentOverview,
             pathMatch: "full"
           },
+          { path: "api", component: ComponentApi, pathMatch: "full" },
           {
-            path: "categories",
-            children: [
-              { path: "", component: ComponentCategoryList },
-              { path: ":id", component: ComponentList }
-            ]
+            path: "examples",
+            component: ComponentExamples,
+            pathMatch: "full"
           },
-          {
-            path: ":id",
-            component: ComponentViewer,
-            children: [
-              { path: "", redirectTo: "overview", pathMatch: "full" },
-              {
-                path: "overview",
-                component: ComponentOverview,
-                pathMatch: "full"
-              },
-              { path: "api", component: ComponentApi, pathMatch: "full" },
-              {
-                path: "examples",
-                component: ComponentExamples,
-                pathMatch: "full"
-              },
-              { path: "**", redirectTo: "overview" }
-            ]
-          }
+          { path: "**", redirectTo: "overview" }
         ]
       }
     ]
   },
+  //   ]
+  // },
   { path: "**", redirectTo: "/auth/login" }
 ];

@@ -11,6 +11,7 @@ import {GaService} from './shared/ga/ga';
   encapsulation: ViewEncapsulation.None,
 })
 export class MaterialDocsApp {
+  hideNavbar: boolean = true;
 
   constructor(router: Router, ga: GaService) {
     let previousRoute = router.routerState.snapshot.url;
@@ -18,6 +19,9 @@ export class MaterialDocsApp {
     router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((data: NavigationEnd) => {
+        this.hideNavbar = data.urlAfterRedirects == '/auth/login' ? true : false;
+        console.log([data, data.url, this.hideNavbar])
+
         // We want to reset the scroll position on navigation except when navigating within
         // the documentation for a single component.
         if (!isNavigationWithinComponentView(previousRoute, data.urlAfterRedirects)) {
