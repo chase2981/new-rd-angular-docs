@@ -7,7 +7,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 describe('MainLayout', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MainLayout, DocsAppTestingModule],
+      imports: [MainLayoutModule, DocsAppTestingModule],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
