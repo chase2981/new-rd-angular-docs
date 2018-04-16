@@ -39,6 +39,8 @@ import {GaService} from './shared/ga/ga';
 import { RouterOutletComponent } from './shared/router-outlet/router-outlet.component';
 import { LoginModule } from './login/login.module';
 import { AuthGuard } from './shared/auth';
+import { LogoffModule } from './logoff/logoff';
+import { MainLayoutModule } from './shared/main-layout/main-layout';
 
 @NgModule({
   imports: [
@@ -66,6 +68,8 @@ import { AuthGuard } from './shared/auth';
     SvgViewerModule,
     ThemePickerModule,
     LoginModule,
+    LogoffModule,
+    MainLayoutModule,
   ],
   declarations: [
     MaterialDocsApp,

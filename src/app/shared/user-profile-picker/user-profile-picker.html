@@ -1,0 +1,10 @@
+<button mat-icon-button [mat-menu-trigger-for]="themeMenu" matTooltip="Select a theme!"
+        tabindex="-1">
+  <mat-icon>account_circle</mat-icon> 
+</button>
+
+<mat-menu class="docs-theme-picker-menu" #themeMenu="matMenu" x-position="before">
+    <button mat-menu-item [routerLink]="['/auth/logoff']">
+      Logoff
+    </button>
+</mat-menu>

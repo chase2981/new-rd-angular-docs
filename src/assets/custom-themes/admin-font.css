@@ -1,14 +1,3 @@
-.login-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.login-container > * {
-  width: 100%;
-}
-
-/* styles.css from https://admin.rentdynamics.com */
-
 @font-face {
   font-family: 'admin';
   src:  url('https://s3.amazonaws.com/icomoon.io/67986/Admin/admin.eot?3ga23n');
@@ -20,7 +9,6 @@
   font-weight: normal;
   font-style: normal;
 }
-
 
 [class^="icon--"], [class*=" icon--"] {
   /* use !important to prevent issues with browser extensions that change fonts */
@@ -81,75 +69,4 @@
 }
 .icon--rd:before {
   content: "\e901";
-}
-
-/* max's styling from https://admin.rentdynamics.com */
-
-body {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto,
-    Helvetica Neue, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #3c4858;
-  background-color: #fff;
-  letter-spacing: -0.5px;
-  -webkit-font-smoothing: antialiased;
-}
-
-.login__content {
-  position: absolute;
-  height: 100%;
-  padding: 48px;
-}
-
-.login__content .login__logo {
-  text-align: center;
-  font-size: 40px;
-  color: #1fb6ff;
-  margin-bottom: 20vh;
-}
-
-.login__content .login__logo i {
-  padding: 0 16px;
-}
-
-.login__graphic {
-  background: linear-gradient(135deg, #1fb6ff, #7e5bef);
-  height: 100%;
-  position: fixed;
-  left: 500px;
-  right: 0;
-}
-*,
-:after,
-:before {
-  box-sizing: inherit;
-}
-.form--vertical {
-  display: inline-block;
-  margin-right: 24px;
-}
-.btn--link {
-  background-color: transparent;
-  color: #1fb6ff;
-  border: none;
-  outline: none;
-  min-width: 40px;
-  padding: 6px 16px;
-  line-height: 36px;
-  vertical-align: middle;
-  text-align: center;
-  display: inline-block;
-  cursor: pointer;
-  font-weight: 700;
-  border-radius: 4px;
-  margin-right: 8px;
-  line-height: 1.5em;
-  transition: all .08s ease-in-out;
-  text-decoration: none;
-}
-
-material-docs-app {
-  top: 0px !important;
 }

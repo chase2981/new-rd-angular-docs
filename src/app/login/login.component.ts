@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
@@ -9,7 +9,8 @@ import { Validators, FormControl, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit, OnDestroy {
   username = '';
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.coreApiSvc.get(userEndpoint).subscribe((result) => {
         if (result.role.id === 1) {
           this.loading = false;
-          this.router.navigateByUrl('/guides');
+          this.router.navigateByUrl('/');
         } else {
           this.authSvc.logout();
           this.password = '';
@@ -55,7 +56,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       }, (err) => {
         /* workaround for now until the apiKey issue is fixed */
         console.log(err);
-        this.router.navigateByUrl('/guides');
+        this.router.navigateByUrl('/');
       });
     })
       .catch((error) => {

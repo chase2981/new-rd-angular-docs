@@ -1,14 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { CoreAuthService, CoreApiService } from '@rd/core';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { NO_ERRORS_SCHEMA } from "@angular/core";
+import { CoreAuthService, CoreApiService } from "@rd/core";
 
-import { LoginComponent } from './login.component';
-import { Router } from '@angular/router';
+import { LoginComponent } from "./login.component";
+import { Router } from "@angular/router";
 
 // import { DocsAppTestingModule } from '../testing/testing-module';
-import { LoginTestingModule } from '../testing/login-testing-module';
+import { LoginTestingModule } from "../testing/login-testing-module";
+import { FormBuilder } from "@angular/forms";
 
-describe('LoginComponent', () => {
+describe("LoginComponent", () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
@@ -16,17 +17,22 @@ describe('LoginComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         // DocsAppTestingModule,
-        LoginTestingModule,
+        LoginTestingModule
       ],
-      declarations: [ LoginComponent ],
+      declarations: [LoginComponent],
       providers: [
         { provide: CoreAuthService, useValue: {} },
         { provide: CoreApiService, useValue: {} },
+        {
+          provide: FormBuilder,
+          useValue: {
+            group: args => {}
+          }
+        }
         // { provide: Router, useClass: RouterStub },
       ],
       schemas: [NO_ERRORS_SCHEMA]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -35,7 +41,7 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
