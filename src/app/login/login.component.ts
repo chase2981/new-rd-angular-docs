@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   errorMessage = '';
   private unsubscribe: Subject<{}> = new Subject();
   public loading = false;
+  hide: boolean = false; 
   usernameFc = new FormControl('', [Validators.required]);
   passwordFc = new FormControl('', [Validators.required, Validators.min(6)]);
   form = this.fb.group({
