@@ -28,7 +28,7 @@ const DOCS: {[key: string]: DocCategory[]} = {
       id: 'compiler',
       name: 'Compiler',
       items: [
-        {id: 'template-compiler', name: 'Overview', examples: ['template-compiler-overview']},
+        {id: 'compiler', name: 'Overview', examples: ['compiler-overview']},
       ]
     },
     {

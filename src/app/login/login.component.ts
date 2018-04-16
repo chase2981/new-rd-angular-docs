@@ -42,16 +42,20 @@ export class LoginComponent implements OnInit, OnDestroy {
     const user = { username: this.username, password: this.password };
     this.authSvc.login(user).then((response) => {
       const userEndpoint = `/users/${this.authSvc.userId}?include=role`;
-      this.coreApiSvc.get(userEndpoint).takeUntil(this.unsubscribe).subscribe((result) => {
+      this.coreApiSvc.get(userEndpoint).subscribe((result) => {
         if (result.role.id === 1) {
           this.loading = false;
-          this.router.navigate(['']);
+          this.router.navigateByUrl('/guides');
         } else {
           this.authSvc.logout();
           this.password = '';
           this.loading = false;
           this.errorMessage = 'You are not authorized to access this app!';
         }
+      }, (err) => {
+        /* workaround for now until the apiKey issue is fixed */
+        console.log(err);
+        this.router.navigateByUrl('/guides');
       });
     })
       .catch((error) => {
@@ -68,7 +72,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.unsubscribe.next();
-    this.unsubscribe.complete();
+
   }
 }
