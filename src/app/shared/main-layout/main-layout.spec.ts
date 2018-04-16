@@ -1,12 +1,14 @@
 import {async, TestBed} from '@angular/core/testing';
-import {UserProfilePicker, UserProfilePickerModule} from './user-profile-picker';
+import {MainLayout, MainLayoutModule} from './main-layout';
 import {DocsAppTestingModule} from '../../testing/testing-module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 
-describe('UserProfilePicker', () => {
+describe('MainLayout', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [UserProfilePickerModule, DocsAppTestingModule],
+      imports: [MainLayout, DocsAppTestingModule],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
 

@@ -91,5 +91,5 @@ export const MATERIAL_DOCS_ROUTES: Routes = [
       }
     ]
   },
-  { path: "**", redirectTo: "" }
+  { path: "**", redirectTo: "/auth/login" }
 ];
