@@ -1,30 +1,52 @@
-<form class="example-form" #loginForm="ngForm" (ngSubmit)="onLogin()" autocomplete="on">
+<div class="login__content">
+  <form class="example-form" [formGroup]="form" #loginForm="ngForm" (ngSubmit)="onLogin()" autocomplete="on">
 
-  <div class="login__logo">
-    <i class="icon--rd"></i>
-    <i class="icon--rp"></i>
-  </div>
-  <br>
-  <div class="form--vertical">
-    <div class="form__group">
-      <label>Username</label>
-        <!-- <mat-form-field class="example-full-width">
-          <input matInput placeholder="username" name="username" [(ngModel)]="username" autocomplete="on">
-        </mat-form-field> -->
-      <input type="text" placeholder="e.g., garrettswainston" id="username" name="username" [(ngModel)]="username" autocomplete="on">
+    <div class="login__logo">
+      <i class="icon--rd"></i>
+      <i class="icon--rp"></i>
     </div>
-    <div class="form__group">
-      <label>Password</label>
-      <input type="password" placeholder="e.g., •••••••••" id="password" name="password" [(ngModel)]="password" autocomplete="on">
+    <br>
+    <div class="form--vertical">
+      <mat-form-field>
+        <input matInput placeholder="Enter your username" [type]="'text'" [(ngModel)]="username" name="username" [formControl]="usernameFc"
+          required>
+        <mat-icon matSuffix (click)="hide = !hide">supervisor_account</mat-icon>
+        <mat-error *ngIf="usernameFc.invalid">{{getErrorMessage(usernameFc)}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [(ngModel)]="password" name="password"
+          [formControl]="passwordFc" required>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        <mat-error *ngIf="passwordFc.invalid">{{getErrorMessage(passwordFc)}}</mat-error>
+      </mat-form-field>
+      <div class="form__group">
+        <mat-slide-toggle name="remember"><a class="btn--link">Remember me?</a></mat-slide-toggle>
+        <!-- <a class="btn--link" routerlink="/auth/forgot" href="/auth/forgot">Forgot your password?</a> -->
+        <button mat-button name="submit" color="accent">Login</button>
+      </div> 
+
     </div>
-    <div class="form__group">
-      <button type="submit" class="btn btn--primary" [disabled]="loading">Login</button>
-      <a class="btn--link" routerLink="/auth/forgot">Forgot your password?</a>
+
+
+
+    <div style="display: none" class="my-stuff">
+      <mat-form-field>
+        <input matInput placeholder="Enter your username" [type]="'text'" [(ngModel)]="username" name="username" [formControl]="usernameFc"
+          required>
+        <mat-icon matSuffix (click)="hide = !hide">supervisor_account</mat-icon>
+        <mat-error *ngIf="usernameFc.invalid">{{getErrorMessage(usernameFc)}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [(ngModel)]="password" name="password"
+          [formControl]="passwordFc" required>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        <mat-error *ngIf="passwordFc.invalid">{{getErrorMessage(passwordFc)}}</mat-error>
+      </mat-form-field>
+
+      <mat-slide-toggle name="remember">remember me?</mat-slide-toggle>
+
+      <button mat-button name="submit" color="accent">Login</button>
     </div>
-
-  </div>
-
-  <div class="alert--warning" *ngIf="errorMessage"><img src="/assets/images/max.gif" alt="">
-    <br>{{ errorMessage }}</div>
-
-</form>
+  </form>
+</div>
+<div class="login__graphic"></div>

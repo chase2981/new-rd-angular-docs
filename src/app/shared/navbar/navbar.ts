@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {ThemePickerModule} from '../theme-picker/theme-picker';
 import {VersionPickerModule} from '../version-picker';
 import {SECTIONS} from '../documentation-items/documentation-items';
+import { UserProfilePickerModule } from '../user-profile-picker';
 
 const SECTIONS_KEYS = Object.keys(SECTIONS);
 
@@ -24,7 +25,7 @@ export class NavBar {
 }
 
 @NgModule({
-  imports: [MatButtonModule, MatMenuModule, RouterModule, ThemePickerModule, VersionPickerModule, CommonModule],
+  imports: [MatButtonModule, MatMenuModule, RouterModule, ThemePickerModule, UserProfilePickerModule, VersionPickerModule, CommonModule],
   exports: [NavBar],
   declarations: [NavBar],
 })
