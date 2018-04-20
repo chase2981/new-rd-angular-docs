@@ -1,9 +1,11 @@
 import {NgModule, Injectable} from '@angular/core';
 
 import {
-  RdAngularCoreModule, CoreAuthServiceConfig
+  RdAngularCoreModule, CoreAuthServiceConfig, CoreAuthService
 } from '@rd/core';
 import { environment } from '../environments/environment';
+// import { CoreAuthService2 } from './shared/auth/core-auth.service';
+// import { CommonModule } from '@angular/common';
 
 @Injectable()
 export class RdCoreAuthServiceConfig implements CoreAuthServiceConfig {
@@ -26,12 +28,13 @@ export class RdCoreAuthServiceConfig implements CoreAuthServiceConfig {
   }
 }
 
-@NgModule({
-  exports: [
-    RdAngularCoreModule,
-  ],
-  providers: [
-    { provide: CoreAuthServiceConfig, useClass: RdCoreAuthServiceConfig }
-  ]
-})
-export class RdAngularWrapperModule {}
+// @NgModule({
+//   imports: [
+//     CommonModule,
+//   ],
+//   providers: [
+//     { provide: CoreAuthServiceConfig, useClass: RdCoreAuthServiceConfig },
+//     { provide: CoreAuthService, useClass: CoreAuthService2 },
+//   ]
+// })
+// export class RdAngularWrapperModule {}
