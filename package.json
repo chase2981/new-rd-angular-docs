@@ -1,6 +1,6 @@
 {
   "name": "@rd/docs",
-  "version": "0.0.0",
+  "version": "0.1.0-beta.1.0",
   "license": "MIT",
   "angular-cli": {},
   "config": {
@@ -28,7 +28,8 @@
     "postinstall": "npm run fetch && npm run config -- --environment=prod",
     "prod-build": "npm run build-themes && ng build --aot --prod",
     "publish-prod": "bash ./tools/deploy.sh stable prod",
-    "publish-dev": "bash ./tools/deploy.sh"
+    "publish-dev": "bash ./tools/deploy.sh",
+    "release": "standard-version"
   },
   "private": false,
   "dependencies": {
@@ -79,6 +80,7 @@
     "karma-sauce-launcher": "^1.1.0",
     "node-sass": "^4.5.3",
     "protractor": "^5.1.1",
+    "standard-version": "^4.3.0",
     "ts-node": "^2.0.0",
     "tslint": "^4.4.2",
     "typescript": "~2.4.0"
