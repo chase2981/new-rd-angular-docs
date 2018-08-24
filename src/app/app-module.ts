@@ -10,7 +10,7 @@ import {ExampleModule} from '@angular/material-examples';
 
 import {MaterialDocsApp} from './material-docs-app';
 import {HomepageModule} from './pages/homepage/homepage';
-import {MATERIAL_DOCS_ROUTES} from './routes';
+import {MATERIAL_DOCS_ROUTES} from './app-routes';
 import {ComponentListModule} from './pages/component-list/component-list';
 import {ComponentViewerModule} from './pages/component-viewer/component-viewer';
 import {ComponentCategoryListModule} from './pages/component-category-list/component-category-list';
@@ -38,9 +38,11 @@ import {environment} from '../environments/environment';
 import {GaService} from './shared/ga/ga';
 import { RouterOutletComponent } from './shared/router-outlet/router-outlet.component';
 import { LoginModule } from './login/login.module';
-import { AuthGuard } from './shared/auth';
-import { LogoffModule } from './logoff/logoff';
+import { AuthGuard } from './shared/auth/auth.guard';
+import { LogoffModule } from './logoff/logoff.module';
 import { MainLayoutModule } from './shared/main-layout/main-layout';
+import { RdCoreAuthServiceConfig } from './rd-angular-wrapper-module';
+import { RdAngularCoreModule, CoreAuthServiceConfig, CoreAuthService } from '@rd/core';
 
 @NgModule({
   imports: [
@@ -70,6 +72,7 @@ import { MainLayoutModule } from './shared/main-layout/main-layout';
     LoginModule,
     LogoffModule,
     MainLayoutModule,
+    RdAngularCoreModule.forRoot()
   ],
   declarations: [
     MaterialDocsApp,
@@ -83,8 +86,10 @@ import { MainLayoutModule } from './shared/main-layout/main-layout';
     StyleManager,
     ThemeStorage,
     CanActivateComponentSidenav,
-    AuthGuard,
     {provide: LocationStrategy, useClass: PathLocationStrategy},
+    AuthGuard,
+    { provide: CoreAuthServiceConfig, useClass: RdCoreAuthServiceConfig },
+    // { provide: CoreAuthService, useClass: CoreAuthService2 },
   ],
   bootstrap: [MaterialDocsApp],
 })

@@ -15,8 +15,9 @@ import { GuideViewer } from "./pages/guide-viewer/guide-viewer";
 import { RouterOutletComponent } from "./shared/router-outlet/router-outlet.component";
 import { LoginComponent } from "./login/login.component";
 import { AuthGuard } from "./shared/auth";
-import { LogoffResolve } from "./logoff/logoff";
-import { MainLayout } from "./shared/main-layout/main-layout";
+import { LogoffResolve } from "./logoff/logoff.resolve";
+import { LogoffComponent } from "./logoff/logoff.component";
+// import { MainLayout } from "./shared/main-layout/main-layout";
 
 export const MATERIAL_DOCS_ROUTES: Routes = [
   {
@@ -24,7 +25,13 @@ export const MATERIAL_DOCS_ROUTES: Routes = [
     component: RouterOutletComponent,
     children: [
       { path: "login", component: LoginComponent },
-      { path: "logoff", resolve: LogoffResolve, redirectTo: "login" }
+      // { path: "logoff", resolve: LogoffResolve, redirectTo: "login" }
+      {
+        path: 'logoff',
+        canActivate: [AuthGuard],
+        resolve: { logoff: LogoffResolve },
+        component: LogoffComponent
+      },
     ]
   },
   // {

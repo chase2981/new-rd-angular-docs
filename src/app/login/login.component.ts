@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
 
-import { CoreAuthService, CoreApiService } from '@rd/core';
+import { CoreApiService, CoreAuthService } from '@rd/core';
 import { Validators, FormControl, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   errorMessage = '';
   private unsubscribe: Subject<{}> = new Subject();
   public loading = false;
-  hide: boolean = false; 
+  hide: boolean = false;
   usernameFc = new FormControl('', [Validators.required]);
   passwordFc = new FormControl('', [Validators.required, Validators.min(6)]);
   form = this.fb.group({
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if(sessionStorage.getItem('rdUserId') && sessionStorage.getItem('rdUserAuthToken')){
       console.log('already logged in..')
-      // this.router.navigateByUrl('');
+      this.router.navigateByUrl('');
     }
   }
 
@@ -42,27 +42,30 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loading = true;
     const user = { username: this.username, password: this.password };
     this.authSvc.login(user).then((response) => {
-      const userEndpoint = `/users/${this.authSvc.userId}?include=role`;
-      this.coreApiSvc.get(userEndpoint).subscribe((result) => {
-        if (result.role.id === 1) {
-          this.loading = false;
-          this.router.navigateByUrl('/');
-        } else {
-          this.authSvc.logout();
-          this.password = '';
-          this.loading = false;
-          this.errorMessage = 'You are not authorized to access this app!';
-        }
-      }, (err) => {
-        /* workaround for now until the apiKey issue is fixed */
-        console.log(err);
-        this.router.navigateByUrl('/');
-      });
+      console.log('login_response', response);
+      this.router.navigateByUrl('/');
+
+      // const userEndpoint = `/users/${this.authSvc.userId}?include=role`;
+      // this.coreApiSvc.get(userEndpoint).subscribe((result) => {
+      //   if (result.role.id === 1) {
+      //     this.loading = false;
+      //     this.router.navigateByUrl('/');
+      //   } else {
+      //     this.authSvc.logout();
+      //     this.password = '';
+      //     this.loading = false;
+      //     this.errorMessage = 'You are not authorized to access this app!';
+      //   }
+      // }, (err) => {
+      //   /* workaround for now until the apiKey issue is fixed */
+      //   console.log(err);
+      //   this.router.navigateByUrl('/');
+      // });
     })
       .catch((error) => {
         this.password = '';
         this.loading = false;
-        this.errorMessage = error.json().error_message;
+        this.errorMessage = error && error.json ? error.json().error_message : error.toString();
       });
   }
 
