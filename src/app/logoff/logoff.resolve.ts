@@ -1,9 +1,7 @@
-import { Injectable, NgModule } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 
-import { AuthService } from '@rd/core';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { CoreAuthService } from '@rd/core';
 
 @Injectable()
@@ -13,20 +11,19 @@ export class LogoffResolve implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot) {
 
-    sessionStorage.removeItem('rdUserId');
-    sessionStorage.removeItem('rdUserAuthToken');
-    this.coreAuthSvc.logout();
+    // sessionStorage.removeItem('rdUserId');
+    // sessionStorage.removeItem('rdUserAuthToken');
+    this.tryLogoffCoreApi();
 
     return Promise.resolve('cuz');
   }
+
+  tryLogoffCoreApi(){
+    try {
+      this.coreAuthSvc.logout();
+    } catch (e) {
+      console.log("authSvc.logout() failed");
+    }
+  }
 }
 
-@NgModule({
-  imports: [
-    CommonModule,
-  ],
-  providers: [
-    LogoffResolve
-  ]
-})
-export class LogoffModule { }
