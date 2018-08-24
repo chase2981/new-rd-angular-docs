@@ -43,7 +43,6 @@ import { LogoffModule } from './logoff/logoff.module';
 import { MainLayoutModule } from './shared/main-layout/main-layout';
 import { RdCoreAuthServiceConfig } from './rd-angular-wrapper-module';
 import { RdAngularCoreModule, CoreAuthServiceConfig, CoreAuthService } from '@rd/core';
-import { CoreAuthService2 } from './shared/auth/core-auth.service';
 
 @NgModule({
   imports: [
@@ -89,7 +88,6 @@ import { CoreAuthService2 } from './shared/auth/core-auth.service';
     CanActivateComponentSidenav,
     {provide: LocationStrategy, useClass: PathLocationStrategy},
     AuthGuard,
-    CoreAuthService2,
     { provide: CoreAuthServiceConfig, useClass: RdCoreAuthServiceConfig },
     // { provide: CoreAuthService, useClass: CoreAuthService2 },
   ],
