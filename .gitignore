@@ -3,6 +3,7 @@
 # Environment variable stuff
 .env
 src/environments/environment.*.ts
+**/node_modules/
 
 # compiled output
 /dist
