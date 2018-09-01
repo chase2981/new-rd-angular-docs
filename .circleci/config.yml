@@ -7,7 +7,7 @@ jobs:
   test-job:
     docker:
       # specify the version you desire here
-      - image: circleci/node:9.3.0-browsers
+      - image: circleci/node:8-browsers
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -52,7 +52,7 @@ jobs:
 
   deploy-job:
     docker:
-        - image: circleci/node:9.3.0-browsers
+        - image: circleci/node:8-browsers
     steps:
         - checkout
         - run: npm install
