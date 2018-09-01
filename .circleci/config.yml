@@ -21,24 +21,24 @@ jobs:
 
       # Download and cache dependencies
       - restore_cache:
-          keys:
+        keys:
           - v1-dependencies-{{ checksum "package.json" }}
 
       - run: npm install
 
       - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+        paths:
+          - node_modules
+        key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
       - run: npm test
       - store_artifacts:
-          path: dist/reports/coverage
+        path: dist/reports/coverage
       - store_artifacts:
-          path: dist/reports/junit
+        path: dist/reports/junit
       - store_test_results:
-          path: dist/reports/junit
+        path: dist/reports/junit
 
     #   - deploy:
     #       name: ./tools/deploy.sh
@@ -52,18 +52,18 @@ jobs:
 
   deploy-job:
     docker:
-        - image: circleci/node:8-browsers
+      - image: circleci/node:8-browsers
     steps:
-        - checkout
-        - run: npm install
-        - run: npm run build
-        - run: cd functions && npm install && npm run build
-        - run: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run: cd functions && npm install && npm run build
+      - run: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
 workflows:
   version: 2
 
-  -test_and_deploy:
+  test_and_deploy_workflow:
     jobs:
       - test-job
       - deploy-job:
