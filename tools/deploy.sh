@@ -16,6 +16,7 @@
 
 npm run build-themes
 npx ng build --aot --prod
+cd functions && npm i
 npx firebase use "rd-docs-dev" --token=$FIREBASE_DEPLOY_TOKEN
 npx firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
