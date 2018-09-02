@@ -72,7 +72,8 @@ jobs:
       - run: yarn build-themes
       - run: npx ng build --aot --prod
       - run: cd functions && npm install && npm run build
-      - run: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+      - run: npx firebase use "rd-docs-dev" --token=$FIREBASE_DEPLOY_TOKEN
+      - run: npx firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
 workflows:
   version: 2
