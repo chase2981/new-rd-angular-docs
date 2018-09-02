@@ -31,6 +31,8 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+      - run: npm rebuild node-sass || true
+
       # run tests!
       - run: yarn test
       - store_artifacts:
