@@ -24,7 +24,7 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
 
-      - run: npm install
+      - run: yarn install
 
       - save_cache:
           paths:
@@ -32,7 +32,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: npm test
+      - run: yarn test
       - store_artifacts:
           path: dist/reports/coverage
       - store_artifacts:
@@ -55,10 +55,10 @@ jobs:
       - image: circleci/node:8-browsers
     steps:
       - checkout
-      - run: npm install
-      - run: npm run build-themes
+      - run: yarn install
+      - run: yarn build-themes
       - run: npx ng build --aot --prod
-      - run: cd functions && npm install && npm run build
+      - run: cd functions && yarn install && yarn build
       - run: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
 workflows:
