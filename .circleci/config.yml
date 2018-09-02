@@ -68,10 +68,10 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-          
+
       - run: yarn build-themes
       - run: npx ng build --aot --prod
-      - run: cd functions && yarn install && yarn build
+      - run: cd functions && npm install && npm run build
       - run: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
 workflows:
