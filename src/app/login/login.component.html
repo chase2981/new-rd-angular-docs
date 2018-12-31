@@ -1,21 +1,22 @@
 <div class="login__content">
   <form class="example-form" [formGroup]="form" #loginForm="ngForm" (ngSubmit)="onLogin()" autocomplete="on">
 
-    <div class="login__logo">
-      <i class="icon--rd"></i>
-      <i class="icon--rp"></i>
+    <div class="login__logo" style="background-color: #1fb6ff;">
+      <img _ngcontent-c3="" height="50" src="https://min.xyz/assets/img/homepage/official2.png" width="50" style="
+        margin-top: 1%;
+    ">
     </div>
     <br>
     <div class="form--vertical">
       <mat-form-field>
-        <input matInput placeholder="Enter your username" [type]="'text'" [(ngModel)]="username" name="username" [formControl]="usernameFc"
-          required>
+        <input matInput placeholder="Enter your username" [type]="'text'" [(ngModel)]="username" name="username"
+          [formControl]="usernameFc" required>
         <mat-icon matSuffix>supervisor_account</mat-icon>
         <mat-error *ngIf="usernameFc.invalid">{{getErrorMessage(usernameFc)}}</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [(ngModel)]="password" name="password"
-          [formControl]="passwordFc" required>
+        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [(ngModel)]="password"
+          name="password" [formControl]="passwordFc" required>
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
         <mat-error *ngIf="passwordFc.invalid">{{getErrorMessage(passwordFc)}}</mat-error>
       </mat-form-field>
@@ -23,7 +24,7 @@
         <mat-slide-toggle name="remember"><a class="btn--link">Remember me?</a></mat-slide-toggle>
         <!-- <a class="btn--link" routerlink="/auth/forgot" href="/auth/forgot">Forgot your password?</a> -->
         <button mat-button name="submit" color="accent">Login</button>
-      </div> 
+      </div>
 
     </div>
 
