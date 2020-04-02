@@ -43,6 +43,7 @@ import { LogoffModule } from './logoff/logoff.module';
 import { MainLayoutModule } from './shared/main-layout/main-layout';
 import { RdCoreAuthServiceConfig } from './rd-angular-wrapper-module';
 import { RdAngularCoreModule, CoreAuthServiceConfig, CoreAuthService } from '@rd/core';
+import { NgConfModule } from './pages/ng-conf';
 
 @NgModule({
   imports: [
@@ -72,7 +73,8 @@ import { RdAngularCoreModule, CoreAuthServiceConfig, CoreAuthService } from '@rd
     LoginModule,
     LogoffModule,
     MainLayoutModule,
-    RdAngularCoreModule.forRoot()
+    RdAngularCoreModule.forRoot(),
+    NgConfModule,
   ],
   declarations: [
     MaterialDocsApp,

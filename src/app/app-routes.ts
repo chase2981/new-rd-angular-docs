@@ -17,6 +17,7 @@ import { LoginComponent } from "./login/login.component";
 import { AuthGuard } from "./shared/auth";
 import { LogoffResolve } from "./logoff/logoff.resolve";
 import { LogoffComponent } from "./logoff/logoff.component";
+import { NgConf } from "./pages/ng-conf";
 // import { MainLayout } from "./shared/main-layout/main-layout";
 
 export const MATERIAL_DOCS_ROUTES: Routes = [
@@ -44,6 +45,11 @@ export const MATERIAL_DOCS_ROUTES: Routes = [
     component: Homepage,
     pathMatch: "full",
     data: {}
+  },
+  {
+    path: 'ng-conf',
+    canActivate: [AuthGuard],
+    component: NgConf
   },
   { path: "categories", redirectTo: "/components/categories" },
   {

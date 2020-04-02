@@ -14,7 +14,7 @@
   "scripts": {
     "commit": "git-cz",
     "config": "node ./src/set-env.js",
-    "prestart": "bash ./tools/fetch-assets-local.sh",
+    "prestart": "npm run fetch",
     "start": "npm run build-themes && ng serve --aot --sourcemaps=false",
     "start-jit": "npm run build-themes && ng serve --sourcemaps=false",
     "lint": "tslint \"src/**/*.ts\"",
