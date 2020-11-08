@@ -46,11 +46,11 @@ export const MATERIAL_DOCS_ROUTES: Routes = [
     pathMatch: "full",
     data: {}
   },
-  {
-    path: 'ng-conf',
-    canActivate: [AuthGuard],
-    component: NgConf
-  },
+  // {
+  //   path: 'ng-conf',
+  //   canActivate: [AuthGuard],
+  //   component: NgConf
+  // },
   { path: "categories", redirectTo: "/components/categories" },
   {
     path: "guides",
